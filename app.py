@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route("/")
 def welcome():
-    return "API"
+    return jsonify({"message": "Welcome to the game API"})
 
 @app.route("/games", methods = ['GET', 'POST'])
 def game():

@@ -90,6 +90,7 @@ def show(request, game_id):
 
 def create(request):
     data = request.get_json()
+    data["id"] = games[-1]["id"] + 1
     games.append(data)
     return data, 201
 
@@ -97,7 +98,7 @@ def destroy(request, game_id):
     game = find_by_id(game_id)
     if game:
         games.remove(game)
-        return {"message": "Game deleted"}, 200
+        return {"message": "Game deleted"}, 204
     return {"error": "Game not found"}, 404
 
 def update(request, game_id):

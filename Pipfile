@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 flask-cors = "*"
 werkzeug = "*"
+pytest = "*"
 
 [dev-packages]
 
@@ -15,3 +16,4 @@ python_version = "3.10"
 
 [scripts]
 dev = 'flask run'
+test = 'pytest'
