@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from werkzeug import exceptions
 from controllers import games
+from waitress import serve
 
 app = Flask(__name__)
 CORS(app)
@@ -29,3 +30,5 @@ def game_handler(game_id):
     }
     resp, code = fns[request.method](request, game_id)
     return jsonify(resp), code
+
+serve(app, listen='*:8080')
