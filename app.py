@@ -31,4 +31,6 @@ def game_handler(game_id):
     resp, code = fns[request.method](request, game_id)
     return jsonify(resp), code
 
-serve(app, listen='*:8080')
+if __name__ == "__main__":
+    #app.run()
+    serve(app, listen='*:8080')
