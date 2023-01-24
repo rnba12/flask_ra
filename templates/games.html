@@ -1,0 +1,20 @@
+{% extends "default.html" %}
+{% block title %}
+    Games
+{% endblock title %}
+
+{%block content%}
+<div class="cardContainer">
+{% for game in games %}
+    <div class="card">
+        <img src="{{game['image']}}">
+        <h1>{{game["name"]}}</h1>
+        <p>Genre: {{game["genre"]}}</p>
+        <p>Release Date: {{game["release"]}}</p>
+        <p>Developer: {{game["developer"]}}</p>
+        <p>Rating: {{game["rating"]}}</p>
+        <a href="games/{{game['id']}}">Go to Game</a>
+    </div>
+{% endfor %}
+</div>
+{%endblock content%}

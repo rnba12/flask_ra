@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 from werkzeug import exceptions
 from controllers import games
@@ -18,7 +18,7 @@ def game():
         'POST': games.create
     }
     resp, code = fns[request.method](request)
-    return jsonify(resp), code
+    return render_template("games.html", games=resp), code
 
 @app.route('/games/<int:game_id>', methods = ['GET', 'PATCH', 'PUT', 'DELETE'])
 def game_handler(game_id):
@@ -29,7 +29,7 @@ def game_handler(game_id):
         'DELETE': games.destroy
     }
     resp, code = fns[request.method](request, game_id)
-    return jsonify(resp), code
+    return render_template("game.html", game=resp), code
 
 if __name__ == "__main__":
     #app.run()
